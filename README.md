@@ -24,6 +24,8 @@ If the first invalid control is in a tab then the form also switches to that tab
 
 `<form *ngIf="active" #textTypeForm="ngForm" novalidate (ngSubmit)="textTypeForm.form.valid ? save() : null" autocomplete="off" autoValidateForm [tabSet]="tabset">`
 
+Referencing this tabset `<tabset class="tab-container tabbable-line" #tabset>`
+
 ## min & max value validation directives
 
 These can be added to numeric form input controls to validate the values in the controls. They work well with the auto validation directives.
