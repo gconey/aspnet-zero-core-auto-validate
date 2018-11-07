@@ -6,7 +6,7 @@ import { AbstractControl, NG_VALIDATORS, Validator } from '@angular/forms';
     providers: [
         { provide: NG_VALIDATORS, useExisting: forwardRef(() => MaxValueValidator), multi: true }
     ],
-    host: { '[attr.max]': 'maxValue ? maxValue : 0' }
+    host: { '[attr.max]': 'maxValue' }
 })
 export class MaxValueValidator implements Validator, OnChanges {
 
@@ -26,6 +26,7 @@ export class MaxValueValidator implements Validator, OnChanges {
         let validationResult = null;
 
         const maxValue = this.maxValue;
+
         if (maxValue && givenvalue > maxValue) {
             validationResult = validationResult || {};
             validationResult = { maxvalue: { requiredValue: this.maxValue }};

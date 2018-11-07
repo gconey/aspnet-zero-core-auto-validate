@@ -6,7 +6,7 @@ import { AbstractControl, NG_VALIDATORS, Validator } from '@angular/forms';
     providers: [
         { provide: NG_VALIDATORS, useExisting: forwardRef(() => MinValueValidator), multi: true }
     ],
-    host: { '[attr.min]': 'minValue ? minValue : 0' }
+    host: { '[attr.min]': 'minValue' }
 })
 export class MinValueValidator implements Validator, OnChanges {
 
@@ -26,6 +26,7 @@ export class MinValueValidator implements Validator, OnChanges {
         let validationResult = null;
 
         const minValue = this.minValue;
+
         if (minValue && givenvalue < minValue) {
             validationResult = validationResult || {};
             validationResult = { minvalue: { requiredValue: this.minValue } };
